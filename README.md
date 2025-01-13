@@ -1,16 +1,11 @@
-# shop_app
+# Shoe Shopping App
 
-A new Flutter project.
+## Overview
+Shoe Shopping App is a Flutter application that allows users to add shoes of their preferred size to a cart and manage their cart efficiently. Built using Dart and the Provider package for state management, this app provides a seamless and dynamic shopping experience.
 
-## Getting Started
+## Features
+- **Add Shoes to Cart:** Select your preferred shoe size and add shoes to the cart.
+- **Remove Shoes from Cart:** Easily delete shoes from the cart.
+- **Real-Time Updates:** The cart dynamically updates as items are added or removed.
+- **State Management:** Utilizes the Provider package for efficient state management.
 
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
