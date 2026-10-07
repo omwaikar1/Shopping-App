@@ -14,12 +14,23 @@ class ProductList extends StatefulWidget {
 class _ProductListState extends State<ProductList> {
   final List<String> filters = const ['All', 'Adidas', 'Nike', 'Bata'];
   late String selectedFilter;
+  String searchQuery = '';
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     selectedFilter = filters[0];
+  }
+
+  List<Map<String, Object>> get visibleProducts {
+    final query = searchQuery.trim().toLowerCase();
+    return products.where((product) {
+      final matchesBrand =
+          selectedFilter == 'All' || product['company'] == selectedFilter;
+      final matchesSearch =
+          (product['title'] as String).toLowerCase().contains(query);
+      return matchesBrand && matchesSearch;
+    }).toList();
   }
 
   @override
@@ -41,9 +52,14 @@ class _ProductListState extends State<ProductList> {
                     style: Theme.of(context).textTheme.titleLarge,
                     //TextStyle(fontWeight: FontWeight.bold, fontSize: 35)),
                   )),
-              const Expanded(
+              Expanded(
                 child: TextField(
-                  decoration: InputDecoration(
+                  onChanged: (value) {
+                    setState(() {
+                      searchQuery = value;
+                    });
+                  },
+                  decoration: const InputDecoration(
                       hintText: 'Search',
                       prefixIcon: Icon(Icons.search),
                       border: border,
@@ -89,9 +105,9 @@ class _ProductListState extends State<ProductList> {
           ),
           Expanded(
             child: ListView.builder(
-                itemCount: products.length,
+                itemCount: visibleProducts.length,
                 itemBuilder: (context, index) {
-                  final product = products[index];
+                  final product = visibleProducts[index];
                   return GestureDetector(
                     onTap: () {
                       Navigator.of(context)

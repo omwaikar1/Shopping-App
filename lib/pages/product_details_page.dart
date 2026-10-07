@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:shop_app/providers/cart_provider.dart';
-import 'package:shop_app/global_variables.dart';
 
 class ProductDetailsPage extends StatefulWidget {
   final Map<String, Object> product;
@@ -16,6 +15,7 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
   int selectedSize = 0;
 
   void onTap() {
+    ScaffoldMessenger.of(context).clearSnackBars();
     if (selectedSize != 0) {
       Provider.of<CartProvider>(context, listen: false).addProduct(
         {
@@ -29,7 +29,7 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
       );
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(
-          content: Text('Product added succesfully'),
+          content: Text('Product added successfully'),
         ),
       );
     } else {
