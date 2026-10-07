@@ -1,0 +1,8 @@
+# Flutter's generated platform runners (C++, CMake, Swift, Kotlin...) are not
+# hand-written code; exclude them so GitHub reports this repo as Dart.
+android/** linguist-generated
+ios/** linguist-generated
+linux/** linguist-generated
+macos/** linguist-generated
+web/** linguist-generated
+windows/** linguist-generated
